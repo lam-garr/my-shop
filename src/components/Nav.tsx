@@ -1,8 +1,12 @@
 import React from 'react';
+import '../styles/Nav.css';
 
 function Nav(){
     return(
-        <nav></nav>
+        <nav className = "nav-bar">
+            <div className='nav-container'>  
+            </div>
+        </nav>
     )
 }
 
