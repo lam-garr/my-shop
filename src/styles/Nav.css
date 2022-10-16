@@ -1,0 +1,15 @@
+.nav-container{
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(22, 22, 22);
+}
+
+.drop-content.active{
+    opacity:1;
+    visibility: visible;
+}
+
+.drop-content.inactive{
+    opacity: 0;
+    visibility: hidden;
+}
