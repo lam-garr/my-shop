@@ -3,7 +3,9 @@ import '../styles/About.css';
 
 function About(){
     return(
-        <main></main>
+        <main>
+            <h1>About</h1>
+        </main>
     )
 }
 

@@ -3,7 +3,9 @@ import '../styles/Home.css';
 
 function Home(){
     return(
-        <main></main>
+        <main>
+            <h1>home</h1>
+        </main>
     )
 }
 

@@ -4,12 +4,71 @@
     background-color: rgb(22, 22, 22);
 }
 
+.nav-logo{
+    background-color: inherit;
+    color: white;
+    font-size: large;
+    font-weight: bolder;
+}
+
+.dropdown{
+    background-color: inherit;
+    right: 0;
+}
+
+.dropbtn{
+    background-color: inherit;
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    border: none;
+    padding: 16px;
+}
+
+.dropbtn:hover{
+    font-size: 26px;
+}
+
+.drop-content{
+    display: flex;
+    flex-direction: column;
+    position:absolute;
+    right: 0;
+    margin-right: 5px;
+    min-width: 150px;
+    background-color: bisque;
+    padding: .75rem;
+    border-radius: .25rem;
+    box-shadow: 9 2px 5px 0 rgba(0,0,0,.1);
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
+}
+
 .drop-content.active{
     opacity:1;
     visibility: visible;
+    transform: translateY(0);
 }
 
 .drop-content.inactive{
     opacity: 0;
     visibility: hidden;
+}
+
+.drop-content button{
+    padding: 10px;
+    font-size: 17px;
+    font-weight: bold;
+    background-color: inherit;
+    border: none;
+    text-decoration: none;
+}
+
+a{
+    text-decoration: none;
+}
+
+.drop-content a:hover{
+    font-size: 19px;
 }
