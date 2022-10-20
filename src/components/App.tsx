@@ -20,9 +20,13 @@ function App() {
     setIsOpen(false);
   }
 
+  const closeHandler = () => {
+    setIsOpen(false);
+  }
+
   return (
     <BrowserRouter>
-      <Sidebar clickHandler={sbClickChange} isOpen={isOpen}/>
+      <Sidebar clickHandler={sbClickChange} closeHandler={closeHandler} isOpen={isOpen}/>
       <Nav clickHandler={navClickChange}/>
       <Routes>
         <Route path='/' element={<Home/>}/>

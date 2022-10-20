@@ -1,20 +1,36 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import { useState } from 'react';
+import { useRef, useEffect } from 'react';
 import '../styles/Sidebar.css';
 
 interface openProp{
     clickHandler: (event: React.MouseEvent<HTMLButtonElement>) => void,
+    closeHandler: () => void,
     isOpen: boolean;
 }
 
 function Sidebar(props:openProp){
 
-    const {clickHandler, isOpen} = props;
+
+    const contentRef = useRef<any>(null); 
+
+    useEffect(()=>{
+        const handleEvent = (e:any) => {
+            if(!contentRef.current.contains(e.target)){
+                props.closeHandler();
+            }
+        };
+
+        document.addEventListener("mousedown",handleEvent);
+
+        return() => {
+            document.removeEventListener("mousedown", handleEvent);
+        }
+    })
 
     return(
-        <aside className={`sidebar ${isOpen?'active' : 'inactive'}`}>
-            <button className='closebtn' onClick={clickHandler}>x</button>
+        <aside className={`sidebar ${props.isOpen?'active' : 'inactive'}`} ref={contentRef}>
+            <button className='closebtn' onClick={props.clickHandler}>x</button>
             <Link to='/'><button>Home</button></Link>
             <Link to='/about'><button>About</button></Link>
             <Link to='/shop'><button>Shop</button></Link>
