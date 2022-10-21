@@ -30,8 +30,8 @@ function Nav(props:handleProp){
     })
 
     return(
-        <nav className = "nav-bar">
-            <div className='nav-container'> 
+        <nav className ='nav-bar'>
+            <div className ='nav-container'> 
                 <button onClick={clickHandler}>open</button>
                 <div className='nav-logo'>
                     <Link to='/'>

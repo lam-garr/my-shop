@@ -33,7 +33,7 @@ function Sidebar(props:openProp){
             <button className='closebtn' onClick={props.clickHandler}>x</button>
             <Link to='/'><button>Home</button></Link>
             <Link to='/about'><button>About</button></Link>
-            <Link to='/shop'><button>Shop</button></Link>
+            <Link to='/shop'><button>Shop</button></Link>    
         </aside>
     )
 }

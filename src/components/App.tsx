@@ -4,6 +4,7 @@ import Home from './Home';
 import About from './About';
 import Shop from './Shop';
 import Sidebar from './Sidebar';
+import Overlay from './Overlay';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useState } from 'react';
 import '../styles/App.css';
@@ -27,6 +28,7 @@ function App() {
   return (
     <BrowserRouter>
       <Sidebar clickHandler={sbClickChange} closeHandler={closeHandler} isOpen={isOpen}/>
+      <Overlay sidebarOpen={isOpen}/>
       <Nav clickHandler={navClickChange}/>
       <Routes>
         <Route path='/' element={<Home/>}/>
