@@ -5,35 +5,57 @@ import About from './About';
 import Shop from './Shop';
 import Sidebar from './Sidebar';
 import Overlay from './Overlay';
+import Overlay2 from './Overlay2';
+import Search from './Search';
+import Searchbar from './Searchbar';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useState } from 'react';
 import '../styles/App.css';
 
 function App() {
 
-  const [isOpen, setIsOpen] = useState(false);
+  //sidebar handling
+  const [sidebarIsOpen, setSidebarIsOpen] = useState(false);
 
-  const navClickChange = () => {
-    setIsOpen(true);
+  const navSidebarClickChange = () => {
+    setSidebarIsOpen(true);
   }
 
-  const sbClickChange = () => {
-    setIsOpen(false);
+  const sidebarClickChange = () => {
+    setSidebarIsOpen(false);
   }
 
-  const closeHandler = () => {
-    setIsOpen(false);
+  const closeSidebarHandler = () => {
+    setSidebarIsOpen(false);
+  }
+
+  //searchbar handling
+  const [searchbarIsOpen, setSearchbarIsOpen] = useState(false);
+
+  const navSearchbarClickChange = () => {
+    setSearchbarIsOpen(true);
+  }
+
+  const searchbarClickChange = () => {
+    setSearchbarIsOpen(false);
+  }
+
+  const closeSearchbarHandler = () => {
+    setSearchbarIsOpen(false);
   }
 
   return (
     <BrowserRouter>
-      <Sidebar clickHandler={sbClickChange} closeHandler={closeHandler} isOpen={isOpen}/>
-      <Overlay sidebarOpen={isOpen}/>
-      <Nav clickHandler={navClickChange}/>
+      <Sidebar clickHandler={sidebarClickChange} closeHandler={closeSidebarHandler} isOpen={sidebarIsOpen}/>
+      <Searchbar clickHandler={searchbarClickChange} closeHandler={closeSearchbarHandler} isOpen={searchbarIsOpen}/>
+      <Overlay sidebarOpen={sidebarIsOpen}/>
+      <Overlay2 searchbarOpen={searchbarIsOpen}/>
+      <Nav sidebarClickHandler={navSidebarClickChange} searchbarClickHandler={navSearchbarClickChange}/>
       <Routes>
         <Route path='/' element={<Home/>}/>
         <Route path='/about' element={<About/>}/>
         <Route path='/shop' element={<Shop/>}/>
+        <Route path='/search' element={<Search/>}/>
       </Routes>
     </BrowserRouter>
   );

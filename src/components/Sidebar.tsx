@@ -11,7 +11,6 @@ interface openProp{
 
 function Sidebar(props:openProp){
 
-
     const contentRef = useRef<any>(null); 
 
     useEffect(()=>{
