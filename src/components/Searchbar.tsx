@@ -15,6 +15,8 @@ function Searchbar(props:openProp) {
 
     const searchbarRef = useRef<any>(null);
 
+    const inputRef = useRef<any>();
+
     useEffect(()=>{
         const handleEvent = (e:any) => {
             if(!searchbarRef.current.contains(e.target)){
@@ -29,11 +31,17 @@ function Searchbar(props:openProp) {
         }
     })
 
+    useEffect(()=>{
+        if(inputRef){
+            inputRef.current.focus();
+        }
+    })
+
     return(
         <nav className={`search-container ${isOpen?'active':'inactive'}`} ref={searchbarRef}>
             <div className='left'></div>
             <div className='middle'>
-                <input autoFocus className='search-input' type='text' aria-label='search field' placeholder='Search...'/>
+                <input className='search-input' type='text' aria-label='search field' placeholder='Search...' ref={inputRef}/>
                 <button className='search-button' aria-label='submit search'>
                     search
                 </button>
