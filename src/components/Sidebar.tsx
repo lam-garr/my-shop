@@ -30,9 +30,9 @@ function Sidebar(props:openProp){
     return(
         <aside className={`sidebar ${props.isOpen?'active' : 'inactive'}`} ref={contentRef}>
             <button className='closebtn' onClick={props.clickHandler}>x</button>
-            <Link to='/'><button>Home</button></Link>
-            <Link to='/about'><button>About</button></Link>
-            <Link to='/shop'><button>Shop</button></Link>    
+            <Link to='/'><button onClick={props.closeHandler}>Home</button></Link>
+            <Link to='/about'><button onClick={props.closeHandler}>About</button></Link>
+            <Link to='/shop'><button onClick={props.closeHandler}>Shop</button></Link>    
         </aside>
     )
 }

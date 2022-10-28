@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { useRef, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useRef, useEffect, useState } from 'react';
 import '../styles/Searchbar.css';
 
 interface openProp{
@@ -13,9 +13,31 @@ function Searchbar(props:openProp) {
 
     const {clickHandler, closeHandler, isOpen} = props;
 
+    const [input, setInput] = useState('');
+
     const searchbarRef = useRef<any>(null);
 
     const inputRef = useRef<any>();
+
+    const navigate = useNavigate();
+
+    const goToResults = (e:any) => {
+        e.preventDefault();
+        closeHandler();
+        clear();
+        navigate({
+            pathname: '/search',
+            search: `?q=${input}`,
+        });
+    }
+
+    const changeInput = (event:any) => {
+        setInput(event.target.value);
+    }
+
+    const clear = () => {
+        setInput('');
+    }
 
     useEffect(()=>{
         const handleEvent = (e:any) => {
@@ -41,10 +63,12 @@ function Searchbar(props:openProp) {
         <nav className={`search-container ${isOpen?'active':'inactive'}`} ref={searchbarRef}>
             <div className='left'></div>
             <div className='middle'>
-                <input className='search-input' type='text' aria-label='search field' placeholder='Search...' ref={inputRef}/>
-                <button className='search-button' aria-label='submit search'>
-                    search
-                </button>
+                <form>
+                    <input className='search-input' type='text' aria-label='search field' placeholder='Search...' value={input} onChange={changeInput} ref={inputRef}/>
+                        <button className='search-button' aria-label='submit search' onClick={goToResults}>
+                            search
+                        </button>
+                </form>
             </div>
             <div className='right'>
                 <button className='close-button' onClick={clickHandler}>x</button>
@@ -54,3 +78,6 @@ function Searchbar(props:openProp) {
 }
 
 export default Searchbar;
+
+//const params = {}
+//search: `?${createSearchParams(search)}`
