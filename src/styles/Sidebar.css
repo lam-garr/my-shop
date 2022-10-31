@@ -54,3 +54,11 @@
 button{
     cursor: pointer;
 }
+
+.search-button.active{
+    cursor: pointer;
+}
+
+.search-button.inactive{
+    cursor: none;
+}

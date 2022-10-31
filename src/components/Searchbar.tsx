@@ -23,11 +23,19 @@ function Searchbar(props:openProp) {
 
     const goToResults = (e:any) => {
         e.preventDefault();
+
+        if(input===''){
+            return;
+        }
+
         closeHandler();
         clear();
+
+        const searchQuery = input.replace(/\s+/g,'+');
+
         navigate({
             pathname: '/search',
-            search: `?q=${input}`,
+            search: `?q=${searchQuery}`,
         });
     }
 
@@ -64,14 +72,14 @@ function Searchbar(props:openProp) {
             <div className='left'></div>
             <div className='middle'>
                 <form>
-                    <input className='search-input' type='text' aria-label='search field' placeholder='Search...' value={input} onChange={changeInput} ref={inputRef}/>
-                        <button className='search-button' aria-label='submit search' onClick={goToResults}>
+                    <input className='search-input' type='text' aria-label='search field' placeholder='Search...' value={input} onChange={changeInput} ref={inputRef} required/>
+                        <button className={`search-button`} aria-label='submit search' onClick={goToResults}>
                             search
                         </button>
                 </form>
             </div>
             <div className='right'>
-                <button className='close-button' onClick={clickHandler}>x</button>
+                <button className='close-button' onClick={clickHandler}>X</button>
             </div>
         </nav>
     )
