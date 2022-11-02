@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSearchParams } from 'react-router-dom';
+import ItemCard from './ItemCard';
 import '../styles/Search.css';
 
 function Search(){
@@ -13,6 +14,13 @@ function Search(){
             <h1>
                 Search Results for "{searchQuery}"
             </h1>
+            <section className='items-container'>
+                <ItemCard/>
+                <ItemCard/>
+                <ItemCard/>
+                <ItemCard/>
+                <ItemCard/>
+            </section>
         </div>
     )
 }
